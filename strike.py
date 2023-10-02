@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import socket
 
 class Details:
     def __init__(self):
