@@ -6,5 +6,5 @@ Also you need to use Netcat to listen in the specific port you given in the file
 
 Eg: nc -l -p 9191
 
-Remember it's the shell is not fully stable
+Remember it's this shell is not fully stable
 
