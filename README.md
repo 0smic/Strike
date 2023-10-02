@@ -8,5 +8,5 @@ Also you need to use Netcat to listen in the specific port you given in the file
 
 Eg: nc -l -p 9191
 
-Remember it's this shell is not fully stable
+Remember the reverse shell is not stable in the windows. If you encounter any issue report it.
 
