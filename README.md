@@ -23,24 +23,12 @@ To run this script, you will need:
 
 2. Change into the project directory:
     ```bash
-   cd .......
+   cd strike
 
 #Configuration
 
 No specific configuration is required for this script. However, you need to specify the target IP and port using command-line arguments.
 
-
-To add this improved README to your GitHub repository, follow these steps:
-
-Open the README file on your local machine using a text editor.
-
-Copy the content of the improved README:
-
-csharp
-Copy code
-# Reverse Shell Generator
-
-A Python script for creating a reverse shell on target systems, supporting both Windows and Linux platforms. Please use responsibly and with proper authorization.
 
 ## Getting Started
 
