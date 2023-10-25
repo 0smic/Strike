@@ -14,33 +14,6 @@ To run this script, you will need:
 - `psutil` library
 - A target machine to run the reverse shell on
 
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/huho-0/Strike/
-
-2. Change into the project directory:
-    ```bash
-   cd strike
-
-#Configuration
-
-No specific configuration is required for this script. However, you need to specify the target IP and port using command-line arguments.
-
-
-## Getting Started
-
-These instructions will help you get a copy of the project up and running on your local machine.
-
-### Prerequisites
-
-To run this script, you will need:
-
-- **Python 3.x**
-- **psutil** library
-- A target machine to run the reverse shell on
 
 ### Installation
 
