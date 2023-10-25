@@ -25,7 +25,6 @@ To run this script, you will need:
    ```bash
    cd strike
 
-
 ##Usage
 
 To create a reverse shell, you can use this script as follows:
