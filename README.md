@@ -48,20 +48,12 @@ To run this script, you will need:
 
    ```bash
    git clone https://github.com/huho-0/Strike/
-Change into the project directory:
+2. Change into the project directory:
+   ```bash
+   cd strike
 
-bash
-Copy code
-cd reverse-shell-generator
-Install the required dependencies (in this case, psutil):
 
-bash
-Copy code
-pip install psutil
-Configuration
-No specific configuration is required for this script. However, you need to specify the target IP and port using command-line arguments.
-
-#Usage
+##Usage
 
 To create a reverse shell, you can use this script as follows:
 
