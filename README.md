@@ -49,7 +49,7 @@ To run the code, follow the usage instructions provided in the "Usage" section a
 
 ## IMPORTANT
 
-You want to start listen to the specific port using 'Netcat' in  another device inorder to receive the reverse shell from the target
+You want to start listening to the specific port using 'Netcat' in  another device inorder to receive the reverse shell from the target
 - listen through Netcat
   ```bash
   nc -nvlp port
