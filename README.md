@@ -11,7 +11,6 @@ These instructions will help you get a copy of the project up and running on you
 To run this script, you will need:
 
 - Python 3.x
-- `psutil` library
 - A target machine to run the reverse shell on
 
 
