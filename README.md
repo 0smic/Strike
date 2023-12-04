@@ -19,10 +19,10 @@ To run this script, you will need:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/huho-0/Strike/
+   git clone https://github.com/0smic/Strike/
 2. Change into the project directory:
    ```bash
-   cd strike
+   cd 0smic
 
 ## Usage
 
