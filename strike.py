@@ -8,8 +8,6 @@ import platform
 import socket
 import argparse
 
-author = "Gokul B"
-
 
 parser = argparse.ArgumentParser(description="A Python script for creating a reverse shell on target systems, supporting Windows and Linux platforms. Use responsibly and with proper authorization.")
 
